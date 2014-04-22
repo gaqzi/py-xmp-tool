@@ -1,5 +1,7 @@
 # Python XMP tool
 
+[![Travis CI](https://travis-ci.org/gaqzi/py-xmp-tool.png?branch=master)](https://travis-ci.org/gaqzi/py-xmp-tool)
+
 This is a simple command line utility to read/write single value
 fields in XMP files using the [python-xmp-toolkit].
 
