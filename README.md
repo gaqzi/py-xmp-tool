@@ -5,6 +5,30 @@
 This is a simple command line utility to read/write single value
 fields in XMP files using the [python-xmp-toolkit].
 
+## Installation
+
+A simple install from pip:
+
+```bash
+$ pip install xmp-tool
+```
+
+**Note**: [python-xmp-toolkit] depends on [Exempi] which needs to be
+  built for XMP to be installed properly.
+
+Use your systems package manager to install [Exempi], on Mac OS X with
+homebrew:
+
+```bash
+$ brew install exempi
+```
+
+On a Debian based Linux system do:
+
+```bash
+# apt-get install libexempi-dev
+```
+
 ## Usage:
 
 ```bash
@@ -58,30 +82,6 @@ test.jpeg: ERROR READING FIELD "PhysicalMedium"
 $ xmp-tool PhysicalMedium --value lto01 test.jpg
 $ xmp-tool PhysicalMedium test.jpg
 test.jpg: PhysicalMedium=lto01
-```
-
-## Installation
-
-A simple install from pip:
-
-```bash
-$ pip install xmp-tool
-```
-
-**Note**: [python-xmp-toolkit] depends on [Exempi] which needs to be
-  built for XMP to be installed properly.
-
-Use your systems package manager to install [Exempi], on Mac OS X with
-homebrew:
-
-```bash
-$ brew install exempi
-```
-
-On a Debian based Linux system do:
-
-```bash
-# apt-get install libexempi-dev
 ```
 
 [python-xmp-toolkit]: https://github.com/python-xmp-toolkit/python-xmp-toolkit
