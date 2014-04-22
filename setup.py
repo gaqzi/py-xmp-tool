@@ -40,7 +40,6 @@ setup(
     ),
     tests_require=(
         'pytest',
-        'pytest-xdist'
     ),
     cmdclass = {'test': PyTest},
     classifiers=(
