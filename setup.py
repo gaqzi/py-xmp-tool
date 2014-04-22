@@ -4,7 +4,6 @@ import sys
 
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
-import xmp
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 
@@ -23,7 +22,7 @@ class PyTest(TestCommand):
 
 setup(
     name='xmp-tool',
-    version=xmp.__version__,
+    version='0.9.0',
     packages=['xmp'],
     license='BSD License',
     description='CLI utility to read/write XMP fields in files',

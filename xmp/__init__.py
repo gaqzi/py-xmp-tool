@@ -4,8 +4,6 @@ import os
 from libxmp import XMPFiles, consts, XMPError
 from libxmp.core import XMPMeta
 
-__version__ = '0.9.0'
-
 
 def write_xmp_sidecar(filename, field, value):
     """Writes field to a XMP sidecar file
