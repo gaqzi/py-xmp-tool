@@ -4,6 +4,27 @@ import os
 from libxmp import XMPFiles, consts, XMPError
 from libxmp.core import XMPMeta
 
+__all__ = ('write_xmp', 'read_xmp', 'main')
+
+
+def _read_xmp_field(xmp, field):
+    """XMP is an instance of XMPMeta and this is to return a value from a
+    field or None if no value available.
+
+    Args:
+      xmp (XMPMeta): An XMPMeta instance to be used
+      field (str): The XMP/DC field to get data about
+
+    Returns:
+      Success: The value of the field
+      On failure: None, when the field doesn't exist
+
+    """
+    try:
+        return xmp.get_property(consts.XMP_NS_DC, field)
+    except (AttributeError, XMPError):
+        return None
+
 
 def write_xmp_sidecar(filename, field, value):
     """Writes field to a XMP sidecar file
@@ -23,6 +44,9 @@ def write_xmp_sidecar(filename, field, value):
     if os.path.exists(sidecar_path):
         with open(sidecar_path, 'r') as f:
             xmp.parse_from_str(f.read())
+
+    if _read_xmp_field(xmp, field) == value:
+        return filename
 
     xmp.set_property(consts.XMP_NS_DC, field, value)
 
@@ -51,9 +75,10 @@ def read_xmp_sidecar(filename, field=None):
         else:
             xmp.parse_from_str(f.read())
 
-    try:
-        return xmp.get_property(consts.XMP_NS_DC, field)
-    except XMPError:
+    val = _read_xmp_field(xmp, field)
+    if val is not None:
+        return val
+    else:
         return False
 
 
@@ -81,6 +106,9 @@ def write_xmp(filename, field, value, sidecar=False):
         return write_xmp_sidecar(filename, field, value)
     elif xmp is None:
         return False
+
+    if _read_xmp_field(xmp, field) == value:
+        return filename
 
     xmp.set_property(consts.XMP_NS_DC, field, value)
 
@@ -119,9 +147,10 @@ def read_xmp(filename, field=None):
         else:
             return False
 
-    try:
-        return xmp.get_property(consts.XMP_NS_DC, field)
-    except (AttributeError, XMPError):
+    val = _read_xmp_field(xmp, field)
+    if val is not None:
+        return val
+    else:
         if os.path.exists(sidecar):
             return read_xmp_sidecar(sidecar, field)
         else:

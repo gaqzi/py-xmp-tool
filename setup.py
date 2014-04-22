@@ -22,7 +22,7 @@ class PyTest(TestCommand):
 
 setup(
     name='xmp-tool',
-    version='0.9.0',
+    version='0.9.1',
     packages=['xmp'],
     license='BSD License',
     description='CLI utility to read/write XMP fields in files',
