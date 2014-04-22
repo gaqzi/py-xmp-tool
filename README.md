@@ -78,5 +78,11 @@ homebrew:
 $ brew install exempi
 ```
 
+On a Debian based Linux system do:
+
+```bash
+# apt-get install libexempi-dev
+```
+
 [python-xmp-toolkit]: https://github.com/python-xmp-toolkit/python-xmp-toolkit
 [Exempi]: http://libopenraw.freedesktop.org/wiki/Exempi/

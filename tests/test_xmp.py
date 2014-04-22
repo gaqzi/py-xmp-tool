@@ -1,4 +1,5 @@
 import os
+import tempfile
 from shutil import copyfile
 
 import pytest
@@ -12,7 +13,7 @@ HELLO_TXT = os.path.join(FILES_FOLDER, 'hello.txt')
 
 @pytest.fixture
 def clean_file(request):
-    filename = os.tmpnam()
+    filename = tempfile.mkstemp()[1]
     copyfile(BUBBA_JPG, filename)
 
     request.addfinalizer(lambda: os.unlink(filename))
@@ -22,7 +23,7 @@ def clean_file(request):
 
 @pytest.fixture
 def clean_file_text(request):
-    filename = os.tmpnam()
+    filename = tempfile.mkstemp()[1]
     copyfile(HELLO_TXT, filename)
 
     def remove_files():

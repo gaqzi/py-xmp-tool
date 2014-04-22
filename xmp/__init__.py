@@ -187,7 +187,7 @@ def main():
         else:
             val = read_xmp(filename, args.field)
             if val:
-                print '{0}: {1}={2}'.format(filename, args.field, val)
+                print('{0}: {1}={2}'.format(filename, args.field, val))
             else:
                 sys.stderr.write('{0}: ERROR READING FIELD "{1}"\n'.format(
                     filename,
