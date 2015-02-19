@@ -5,6 +5,7 @@ from libxmp import XMPFiles, consts, XMPError
 from libxmp.core import XMPMeta
 
 __all__ = ('write_xmp', 'read_xmp', 'main')
+__version__ = '0.9.2'
 
 
 def _read_xmp_field(xmp, field):

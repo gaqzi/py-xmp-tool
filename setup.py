@@ -5,7 +5,7 @@ import sys
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
+README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
 
 class PyTest(TestCommand):
@@ -22,7 +22,7 @@ class PyTest(TestCommand):
 
 setup(
     name='xmp-tool',
-    version='0.9.1',
+    version='0.9.2',
     packages=['xmp'],
     license='BSD License',
     description='CLI utility to read/write XMP fields in files',
@@ -41,11 +41,16 @@ setup(
     tests_require=(
         'pytest',
     ),
-    cmdclass = {'test': PyTest},
+    cmdclass={'test': PyTest},
     classifiers=(
         'Environment :: Console',
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
         'Topic :: Utilities',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
     ),
 )
